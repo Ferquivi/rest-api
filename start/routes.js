@@ -18,4 +18,8 @@ const UserController = require('../app/Controllers/Http/UserController')
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('usuarios/registro', 'UserController.store');
+Route.group(() => {
+  Route.post('usuarios/registro', 'UserController.store');
+}).prefix('api/vi/');
+
+
