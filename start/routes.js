@@ -20,6 +20,7 @@ const Route = use('Route')
 
 Route.group(() => {
   Route.post('usuarios/registro', 'UserController.store');
-}).prefix('api/vi/');
+  Route.post('usuarios/login', 'UserController.login');
+}).prefix('api/v1/');
 
 
