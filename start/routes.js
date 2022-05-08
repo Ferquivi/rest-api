@@ -1,5 +1,6 @@
 'use strict'
 
+const ProyectoController = require('../app/Controllers/Http/ProyectoController');
 const UserController = require('../app/Controllers/Http/UserController')
 
 /*
@@ -21,6 +22,8 @@ const Route = use('Route')
 Route.group(() => {
   Route.post('usuarios/registro', 'UserController.store');
   Route.post('usuarios/login', 'UserController.login');
+  Route.get('proyectos', 'ProyectoController.index').middleware('auth');
+  Route.get('proyectos', 'ProyectoController.create').middleware('auth');
 }).prefix('api/v1/');
 
 
