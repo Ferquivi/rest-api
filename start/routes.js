@@ -1,5 +1,6 @@
 'use strict'
 
+const ProyectoController = require('../app/Controllers/Http/ProyectoController');
 const UserController = require('../app/Controllers/Http/UserController')
 
 /*
@@ -21,6 +22,20 @@ const Route = use('Route')
 Route.group(() => {
   Route.post('usuarios/registro', 'UserController.store');
   Route.post('usuarios/login', 'UserController.login');
+  //Rutas de los proyectos
+  Route.get('proyectos', 'ProyectoController.index').middleware('auth');
+  Route.post('proyectos', 'ProyectoController.create').middleware('auth');
+  Route.patch('proyectos/:id', 'ProyctoController.update').middleware('auth');
+  Route.delete('proyectos/:id', 'ProyctoController.destroy').middleware('auth');
+  
+  //Rutas de las tareas
+  Route.get('proyectos/:id/tareas', 'TareaController.index').middleware('auth');
+  Route.post('proyectos/:id/tareas', 'TareaController.create').middleware('auth');
+  Route.patch('tareas/:id', 'TareaController.update').middleware('auth');
+  Route.delete('tareas/:id', 'TareaController.destroy').middleware('auth');
+
+  
+
 }).prefix('api/v1/');
 
 
